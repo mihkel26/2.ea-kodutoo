@@ -137,6 +137,11 @@ Word.prototype = {
     this.ctx.textAlign = 'center'
     this.ctx.font = '140px Courier'
     this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
+
+    
+	  this.ctx.textAlign = 'center'
+    this.ctx.font = '100px Arial'
+	  this.ctx.fillText(Math.round(typer.points),this.canvas.width / 2, 300)
   },
 
   removeFirstLetter: function () {
