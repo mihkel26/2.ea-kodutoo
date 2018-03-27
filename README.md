@@ -6,6 +6,7 @@ Skeem:
 
 Skoori moodustamine: Iga õigesti arvatud sõna eest saab 10 punkti. Juhul kui ei tehta vigu 5 sõna jooksul, korrutatakse mängija punktid läbi 1.5 kordselt. Juhul kui mängija teeb vea, kaotab ta 20% oma punktidest. Lubatud on teha kuni 5 viga. Peale seda on mäng läbi
 
+http://greeny.cs.tlu.ee/~magimihk/2.ea-kodutoo/
 
 
 
