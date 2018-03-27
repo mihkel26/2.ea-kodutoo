@@ -81,9 +81,9 @@ TYPER.prototype = {
       this.points = this.points*0.8
       this.mistakes += 1
       this.guessedWords = 0
-      this.rightGuess = false
       //console.log(this.points)
       //console.log(this.mistakes)
+      this.word.wrongGuess()
       this.word.Draw()
 
       if (this.mistakes > 4) {
@@ -141,19 +141,24 @@ const Word = function (word, canvas, ctx) {
 
 Word.prototype = {
   Draw: function () {
+    console.log(this.rightGuess)
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    this.ctx.fillStyle = 'black'
 
-    if (this.rightGuess) {
+    if (this.rightGuess == true || this.rightGuess == undefined) {
       this.ctx.fillStyle = 'black'
+      this.ctx.textAlign = 'center'
+      this.ctx.font = '140px Courier'
+      this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
     } else {
       this.ctx.fillStyle = 'red'
+      this.ctx.textAlign = 'center'
+      this.ctx.font = '140px Courier'
+      this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
     }
 
-    this.ctx.textAlign = 'center'
-    this.ctx.font = '140px Courier'
-    this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
 
-    
+    this.ctx.fillStyle = 'black'
 	  this.ctx.textAlign = 'center'
     this.ctx.font = '100px Arial'
     this.ctx.fillText("punktid: " + Math.round(typer.points),this.canvas.width / 3, 300)
@@ -165,7 +170,12 @@ Word.prototype = {
 
   removeFirstLetter: function () {
     this.left = this.left.slice(1)
+    this.rightGuess = true
     
+  },
+
+  wrongGuess: function () {
+    this.rightGuess = false
   }
 }
 
@@ -195,6 +205,7 @@ function startGame () {
   const typer = new TYPER()
   window.typer = typer
 }
+
 
 window.onload = function () {
   startButton = document.getElementById('startButton')
