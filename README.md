@@ -1,5 +1,15 @@
 # 2. kodutöö – kirjutamise mängu täiendamine
 
+Autorid: Mihkel Mägi, Rando Aljaste, Kaspar Aasmäe
+
+Skeem:
+
+Skoori moodustamine: Iga õigesti arvatud sõna eest saab 10 punkti. Juhul kui ei tehta vigu 5 sõna jooksul, korrutatakse mängija punktid läbi 1.5 kordselt. Juhul kui mängija teeb vea, kaotab ta 20% oma punktidest. Lubatud on teha kuni 5 viga. Peale seda on mäng läbi
+
+
+
+
+
 Mängu eesmärk on võimalikult kiiresti ekraanile tekkivaid sõnu ära trükkida. Sõnad on võetud [Eesti Keele Instituudi lehelt](http://www.eki.ee/tarkvara/wordlist/) – [lemmad2013](http://www.eki.ee/tarkvara/wordlist/lemmad2013.txt). Aluseks tuleb võtta kood **[eesrakenduste-arendamine-2018k/klahvimine](https://github.com/eesrakenduste-arendamine-2018k/klahvimine)**. 
 
 ### Tähtpäev 26.03.2018 23:59
