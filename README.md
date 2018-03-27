@@ -1,5 +1,10 @@
 # 2. kodutöö – kirjutamise mängu täiendamine
 
+
+NB!!! töö on poolik
+
+
+
 Autorid: Mihkel Mägi, Rando Aljaste, Kaspar Aasmäe
 
 Skeem:
