@@ -16,11 +16,23 @@
       
       canvas {
         position: absolute;
+
+      }
+
+      #frontPage {
+        text-align: center;
+        background-color: rgb(155, 235, 235);
+        margin-top: 200px
       }
     </style>
     <script src="app.js"></script>
   </head>
   <body>
+    <div id="frontPage">
+      <h1>Sisesta nimi</h1>
+      <input type="text" id="playerName">
+      <button id="startButton">Mängima!</button>
+    </div>
     <canvas></canvas>
   </body>
 </html>

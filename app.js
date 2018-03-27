@@ -1,3 +1,6 @@
+let playerName
+
+
 /* TYPER */
 const TYPER = function () {
   if (TYPER.instance_) {
@@ -17,6 +20,7 @@ const TYPER = function () {
   this.mistakes = 0
   this.combo = 0
   this.points = 0
+  this.rightGuess = true;
 
   this.init()
 }
@@ -76,21 +80,26 @@ TYPER.prototype = {
     if (letter !== this.word.left.charAt(0)) {
       this.points = this.points*0.8
       this.mistakes += 1
-	  this.guessedWords = 0
+      this.guessedWords = 0
+      this.rightGuess = false
       //console.log(this.points)
       //console.log(this.mistakes)
+      this.word.Draw()
 
       if (this.mistakes > 4) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
         this.ctx.textAlign = 'center'
-        this.ctx.font = '140px Courier'
+        this.ctx.font = '100px Arial'
+        this.ctx.fillText("punktid: " + Math.round(typer.points),this.canvas.width / 2, 300)
+
+        this.ctx.textAlign = 'center'
+        this.ctx.font = '100px Courier'
         this.ctx.fillStyle = "red";
-        this.ctx.fillText("Game over! Press x to play again!", this.canvas.width / 2, this.canvas.height / 2)
+        this.ctx.fillText("Mäng läbi! Vajuta x, et alustada uuesti", this.canvas.width / 2, this.canvas.height / 2)
         if (letter === "x") {
           location.reload();
-        }
-        
+        }       
 
       }
       
@@ -134,6 +143,12 @@ Word.prototype = {
   Draw: function () {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
+    if (this.rightGuess) {
+      this.ctx.fillStyle = 'black'
+    } else {
+      this.ctx.fillStyle = 'red'
+    }
+
     this.ctx.textAlign = 'center'
     this.ctx.font = '140px Courier'
     this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
@@ -141,11 +156,16 @@ Word.prototype = {
     
 	  this.ctx.textAlign = 'center'
     this.ctx.font = '100px Arial'
-	  this.ctx.fillText(Math.round(typer.points),this.canvas.width / 2, 300)
+    this.ctx.fillText("punktid: " + Math.round(typer.points),this.canvas.width / 3, 300)
+    
+    this.ctx.textAlign = 'center'
+    this.ctx.font = '100px Arial'
+	  this.ctx.fillText("Vigu: " + Math.round(typer.mistakes),this.canvas.width / 1.5, 300)
   },
 
   removeFirstLetter: function () {
     this.left = this.left.slice(1)
+    
   }
 }
 
@@ -163,7 +183,20 @@ function structureArrayByWordLength (words) {
   return tempArray
 }
 
-window.onload = function () {
+
+function startGame () {
+  playerName = document.getElementById('playerName').value
+  let x = document.getElementById("frontPage");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
   const typer = new TYPER()
   window.typer = typer
+}
+
+window.onload = function () {
+  startButton = document.getElementById('startButton')
+  startButton.addEventListener('click', startGame)
 }
