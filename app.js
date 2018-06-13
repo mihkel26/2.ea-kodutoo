@@ -21,6 +21,7 @@ const TYPER = function () {
   this.combo = 0
   this.points = 0
   this.rightGuess = true;
+  this.playerName = document.getElementById('playerName').value
 
   this.init()
 }
@@ -90,15 +91,17 @@ TYPER.prototype = {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
         this.ctx.textAlign = 'center'
-        this.ctx.font = '100px Arial'
-        this.ctx.fillText("punktid: " + Math.round(typer.points),this.canvas.width / 2, 300)
+        this.ctx.font = '80px Courier'
+        this.ctx.fillText("Kogusid punkte: " + Math.round(typer.points),this.canvas.width / 2, 300)
 
         this.ctx.textAlign = 'center'
         this.ctx.font = '100px Courier'
-        this.ctx.fillStyle = "red";
-        this.ctx.fillText("Mäng läbi! Vajuta x, et alustada uuesti", this.canvas.width / 2, this.canvas.height / 2)
+        this.ctx.fillStyle = "black";
+        this.ctx.fillText("Mäng läbi! Vajuta x, et näha skooritabelit", this.canvas.width / 2, this.canvas.height / 2)
         if (letter === "x") {
-          location.reload();
+			localStorage.setItem(this.playerName, Math.round(typer.points));
+			window.location.replace("scores.html")
+            //location.reload();
         }       
 
       }
@@ -160,11 +163,11 @@ Word.prototype = {
 
     this.ctx.fillStyle = 'black'
 	  this.ctx.textAlign = 'center'
-    this.ctx.font = '100px Arial'
+    this.ctx.font = '100px Courier'
     this.ctx.fillText("punktid: " + Math.round(typer.points),this.canvas.width / 3, 300)
     
     this.ctx.textAlign = 'center'
-    this.ctx.font = '100px Arial'
+    this.ctx.font = '100px Courier'
 	  this.ctx.fillText("Vigu: " + Math.round(typer.mistakes),this.canvas.width / 1.5, 300)
   },
 
@@ -204,6 +207,23 @@ function startGame () {
   }
   const typer = new TYPER()
   window.typer = typer
+}
+
+function generateScoreTable() {
+  
+
+  for (var i = 0, len = localStorage.length; i < len; ++i) {
+    let tableRow = document.createElement("tr")
+    let th = document.createElement("th")
+    let textNodeKey = document.createTextNode(localStorage.key(i))
+    th.appendChild(textNodeKey)
+    let td = document.createElement("td")
+    let textNodeValue = document.createTextNode(localStorage.getItem(localStorage.key(i)))
+    td.appendChild(textNodeValue)
+    tableRow.appendChild(th)
+    tableRow.appendChild(td)
+    document.getElementById("scoreTableBody").appendChild(tableRow)
+  }
 }
 
 

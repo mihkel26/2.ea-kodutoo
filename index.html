@@ -2,13 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>typer</title>
+    <title>klahvimine</title>
     <style> 
       * {
         margin: 0;
         padding: 0;
       }
-
       html, body, canvas {
         width: 100%;
         height: 100%;
@@ -16,22 +15,54 @@
       
       canvas {
         position: absolute;
-
       }
-
+	  
+	  #intro {
+        text-align: center;
+        margin-top: 2px
+      }
+	  
       #frontPage {
         text-align: center;
         background-color: rgb(155, 235, 235);
         margin-top: 200px
       }
+	  
+	  .button {
+		background-color: #000000; /* Green */
+		border: none;
+		color: white;
+		padding: 9px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+	}
+
+	.button2:hover {
+		box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+	
+
     </style>
     <script src="app.js"></script>
+	
   </head>
   <body>
+  
     <div id="frontPage">
-      <h1>Sisesta nimi</h1>
-      <input type="text" id="playerName">
-      <button id="startButton">Mängima!</button>
+	<img src="logo.png"/>
+	<div id="intro">
+  <p>Mängu eesmärk on võimalikult kiiresti ekraanile tekkivaid sõnu ära trükkida. Iga õigesti kirjutatud sõna eest saab 10 punkti, kui arvate ära 5 sõna järjest, teie punktid x1,5. </p>
+  <p>Kui kirjutate tähe valesti läheb teie skoorist 20% maha. Ja kui olete teinud kokku 5 viga siis on GameOver. =D </p>
+  </div>
+  <br>  
+      <input type="text" placeholder="Sisesta enda nimi"id="playerName">
+      <button class="button button2" id="startButton">Mängima!</button>
     </div>
     <canvas></canvas>
   </body>
