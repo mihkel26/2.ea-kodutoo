@@ -225,7 +225,8 @@ function generateScoreTable() {
     document.getElementById("scoreTableBody").appendChild(tableRow)
   }
 }
-
+// https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_appendchild
+// https://stackoverflow.com/questions/8419354/get-html5-localstorage-keys
 
 window.onload = function () {
   startButton = document.getElementById('startButton')
